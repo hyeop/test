@@ -1,0 +1,28 @@
+{% extends "acc/base.html" %}
+{% block content %}
+<form method="POST">
+    {% csrf_token %}
+    <div class="container mt-5 text-center">
+        <h1>Register</h1>
+        <div class="mt-5">
+        {% for i in form %}
+            <div class="mb-3 row">
+                <label for="input" class="col-sm-5 col-form-label">{{ i.label }}</label>
+                <div class="col-sm-5">
+                    {{ i }}
+                </div>
+            </div>
+            {% if field.errors %} 
+            <span style='color:red'>{{field.errors}}</span> 
+            {% endif %}
+        {% endfor %}
+        </div>
+        
+        <input type = 'submit' value="회원가입" class="btn btn-primary">
+
+
+
+    </div>
+</form>
+
+{% endblock %}
